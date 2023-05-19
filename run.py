@@ -129,3 +129,17 @@ def main():
 print("Welcome to Love Sandwiches Data Automation")
 main()
 
+def get_stock_values(data):
+    """
+    Retrieve the headings from the worksheet and create a dictionary
+    with headings as keys and data as values.
+    """
+    headings = SHEET.worksheet("stock").get_all_values()[0]
+    stock_values = {headings[i]: data[i] for i in range(len(headings))}
+    return stock_values
+
+stock_data = main()
+stock_values = get_stock_values(stock_data)
+print(stock_values)
+
+print("Welcome to Love Sandwiches data automation.\n")
